@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +36,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
      String name = userList.get(position).getName();
      holder.setData(resource,userName,name);
 
+
     }
 
     @Override
@@ -54,6 +56,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             userDp = itemView.findViewById(R.id.user_dp);
             userName = itemView.findViewById(R.id.username);
             name = itemView.findViewById(R.id.name);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), name.getText().toString()+" || "+userName.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
 
         }
         private void setData(int res, String usrName, String Name){
